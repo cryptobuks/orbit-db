@@ -38,7 +38,7 @@ const waitForPeers = (ipfs, topic) => {
   })
 }
 
-describe.only('OrbitDB - Network Stress Tests', function() {
+describe.skip('OrbitDB - Network Stress Tests', function() {
   // We need a huge timeout since we're running
   // very long-running tests (takes minutes)
   this.timeout(1000 * 60 * 60) // 1 hour
@@ -113,6 +113,24 @@ describe.only('OrbitDB - Network Stress Tests', function() {
         { name: 'daemon4' },
         { name: 'daemon5' },
         { name: 'daemon6' },
+      ],
+    },
+    {
+      description: '50 messages over a period long time - 8 peers - slow, random write intervals',
+      messages: 100,
+      maxInterval: 3000,
+      minInterval: 1000,
+      sequential: false,
+      content: 'Terve! ',
+      clients: [
+        { name: 'daemon1' },
+        { name: 'daemon2' },
+        { name: 'daemon3' },
+        { name: 'daemon4' },
+        { name: 'daemon5' },
+        { name: 'daemon6' },
+        { name: 'daemon7' },
+        { name: 'daemon8' },
       ],
     },
   ]
